@@ -1,0 +1,53 @@
+.ikona {
+  font-size: 50px;
+  color: #9932cc;
+  margin-top: 20px;
+}
+
+i.main {
+  font-size: 90px;
+  margin: 0px auto 10px 40px;
+}
+.dzis {
+  padding-top: 30px;
+}
+
+.col-6.wind {
+  text-align: right;
+  margin: 30px auto 15px auto;
+  padding-top: 10px;
+  position: relative;
+  top: -15px;
+}
+form {
+  padding: 10px;
+}
+
+div.row.dzis {
+  margin: 30px auto 0px;
+}
+div.cit h4,
+div.cit p {
+  margin: 0;
+  line-height: 25px;
+}
+div.cit h3 {
+  margin: 5px auto;
+  font-size: 40px;
+}
+a,
+a:link,
+a:visited,
+a:focus,
+a:hover {
+  text-decoration: none;
+}
+#location {
+  font-family: "Anton", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  width: 98%;
+  display: block;
+  margin: 0 auto;
+  color: #9932cc;
+}
