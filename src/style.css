@@ -54,10 +54,11 @@ a:hover {
 
 .card {
   display: block;
-  margin: 0 auto;
+  margin: 30px auto 0;
+  box-shadow: -1px 1px 14px rgba(0, 0, 0, 0.2);
 }
 .footer {
   display: block;
-  margin: 60px, auto;
+  margin: 10px auto;
   text-align: center;
 }
