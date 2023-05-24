@@ -1,39 +1,57 @@
 .ikona {
-  font-size: 50px;
+  font-size: 30px;
   color: #9932cc;
   margin-top: 20px;
+  margin-right: 5px;
+}
+
+ul,
+li {
+  list-style-type: none;
+  display: inline;
+
+  text-align: left;
+  padding: 0;
+}
+
+li {
+  float: left;
+  margin-right: 20px;
 }
 
 i.main {
-  font-size: 90px;
-  margin: 0px auto 10px 40px;
-}
-.dzis {
-  padding-top: 30px;
+  font-size: 60px;
+  margin-top: 25px;
 }
 
-.col-6.wind {
-  text-align: right;
-  margin: 30px auto 15px auto;
-  padding-top: 10px;
-  position: relative;
-  top: -15px;
+#current-time,
+#what-sky {
+  font-family: "Montserrat", sans-serif;
+  color: #a48bb0;
+  font-size: 20px;
+  font-weight: 400;
 }
+
 form {
   padding: 10px;
 }
-
+li.temp-style {
+  font-family: "Amatic SC", cursive;
+  font-weight: 700;
+  font-size: 60px;
+  text-align: left;
+  margin-left: 5px;
+  margin-top: 10px;
+}
 div.row.dzis {
-  margin: 30px auto 0px;
+  margin-top: 45px;
+  padding: 20px;
 }
-div.cit h4,
-div.cit p {
-  margin: 0;
-  line-height: 25px;
-}
-div.cit h3 {
-  margin: 5px auto;
-  font-size: 40px;
+
+#zmienialneMiasto {
+  margin-bottom: 3px;
+  font-size: 50px;
+  font-weight: 700;
 }
 a,
 a:link,
@@ -42,9 +60,10 @@ a:focus,
 a:hover {
   text-decoration: none;
 }
+
 #location {
-  font-family: "Anton", sans-serif;
   font-family: "Montserrat", sans-serif;
+  font-weight: 300;
   font-size: 16px;
   width: 98%;
   display: block;
@@ -61,4 +80,35 @@ a:hover {
   display: block;
   margin: 10px auto;
   text-align: center;
+}
+
+.city-summary {
+  font-family: "Amatic SC", cursive;
+  font-size: 25px;
+  line-height: 15px;
+  text-align: left;
+  margin-left: 0;
+}
+
+div.col.wind {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  line-height: 8px;
+  text-align: right;
+  margin-top: 60px;
+  color: #a48bb0;
+}
+
+div.row.future {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+p.day {
+  font-family: "Amatic SC", cursive;
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 0;
 }

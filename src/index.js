@@ -8,13 +8,13 @@ function formatDate(date) {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
 
   let currentDay = days[date.getDay()];
   let currentHour = date.getHours();
   if (currentHour < 10) {
-    currentHour = `0${currentDay}`;
+    currentHour = `0${currentHour}`;
   }
   let currentMinutes = date.getMinutes();
   if (currentMinutes < 10) {
