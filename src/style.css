@@ -116,3 +116,7 @@ p.day {
 a.active {
   color: #53445a;
 }
+
+div.row.future img {
+  max-width: 30px;
+}

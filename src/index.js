@@ -1,6 +1,5 @@
-let currentTime = new Date();
-
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let days = [
     "Sunday",
     "Monday",
@@ -26,26 +25,30 @@ function formatDate(date) {
   return formattedDate;
 }
 
-let dayTime = document.querySelector("span#current-time");
+function formatForecastday(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-let poprawny = formatDate(currentTime);
-
-dayTime.innerHTML = poprawny;
+  return days[day];
+}
 
 function displayForecast(response) {
   console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
-  let days = ["Mon.", "Tues.", "Wed.", "Thurs.", "Fri."];
+  let forecast = response.data.daily;
   let forecastHtml = `<div class="row future">`;
-  days.forEach(function (day) {
+  forecast.forEach(function (forecastDay) {
     forecastHtml =
       forecastHtml +
       ` <div class="col">
-                <i class="fa-solid fa-cloud-bolt ikona"></i>
+                <img src="${forecastDay.condition.icon_url}" alt="${
+        forecastDay.condition.description
+      }" / >
                 <br />
-                <p class="day">${day}</p>
-                21°C
+                <p class="day">${formatForecastday(forecastDay.time)}</p>
+                ${Math.round(forecastDay.temperature.day)}
               </div>`;
   });
 
@@ -69,6 +72,8 @@ function showTemp(response) {
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute("src", response.data.condition.icon_url);
   iconElement.setAttribute("alt", response.data.condition.description);
+  let dayTime = document.querySelector("span#current-time");
+  dayTime.innerHTML = formatDate(response.data.time * 1000);
 
   document.querySelector(
     "#zmienialneMiasto"
