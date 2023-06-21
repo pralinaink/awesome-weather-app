@@ -33,10 +33,15 @@ let poprawny = formatDate(currentTime);
 dayTime.innerHTML = poprawny;
 
 function showTemp(response) {
-  console.log(response.data);
   let roundTemp = Math.round(response.data.main.temp);
   let temp = document.querySelector("#wartosc");
   temp.innerHTML = `${roundTemp}`;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 
   document.querySelector(
     "#zmienialneMiasto"
