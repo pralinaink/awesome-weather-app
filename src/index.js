@@ -32,7 +32,8 @@ let poprawny = formatDate(currentTime);
 
 dayTime.innerHTML = poprawny;
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Mon.", "Tues.", "Wed.", "Thurs.", "Fri."];
@@ -50,6 +51,14 @@ function displayForecast() {
 
   forecastHtml = forecastHtml + `</div>`;
   forecastElement.innerHTML = forecastHtml;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "8bbb9otb892b40003fdadb08ecfd649a";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function showTemp(response) {
@@ -76,6 +85,8 @@ function showTemp(response) {
   document.querySelector(
     "#humidity"
   ).innerHTML = `${response.data.temperature.humidity}`;
+
+  getForecast(response.data.coordinates);
 }
 
 function serchCity(citySearch) {
@@ -136,5 +147,4 @@ fahrenheitLink.addEventListener("click", displayfahrenheitTemp);
 let celciusLink = document.querySelector("#cel-link");
 celciusLink.addEventListener("click", displaycelciusTemp);
 
-displayForecast();
 serchCity("Zagreb");
