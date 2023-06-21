@@ -32,6 +32,26 @@ let poprawny = formatDate(currentTime);
 
 dayTime.innerHTML = poprawny;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Mon.", "Tues.", "Wed.", "Thurs.", "Fri."];
+  let forecastHtml = `<div class="row future">`;
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      ` <div class="col">
+                <i class="fa-solid fa-cloud-bolt ikona"></i>
+                <br />
+                <p class="day">${day}</p>
+                21℃
+              </div>`;
+  });
+
+  forecastHtml = forecastHtml + `</div>`;
+  forecastElement.innerHTML = forecastHtml;
+}
+
 function showTemp(response) {
   celciusTemp = response.data.main.temp;
   let roundTemp = Math.round(celciusTemp);
@@ -121,4 +141,5 @@ fahrenheitLink.addEventListener("click", displayfahrenheitTemp);
 let celciusLink = document.querySelector("#cel-link");
 celciusLink.addEventListener("click", displaycelciusTemp);
 
+displayForecast();
 serchCity("Zagreb");
