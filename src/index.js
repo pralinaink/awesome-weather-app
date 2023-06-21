@@ -44,7 +44,7 @@ function displayForecast() {
                 <i class="fa-solid fa-cloud-bolt ikona"></i>
                 <br />
                 <p class="day">${day}</p>
-                21℃
+                21°C
               </div>`;
   });
 
@@ -53,38 +53,34 @@ function displayForecast() {
 }
 
 function showTemp(response) {
-  celciusTemp = response.data.main.temp;
+  celciusTemp = response.data.temperature.current;
   let roundTemp = Math.round(celciusTemp);
   let temp = document.querySelector("#wartosc");
   temp.innerHTML = `${roundTemp}`;
   let iconElement = document.querySelector("#icon");
-  iconElement.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  iconElement.setAttribute("alt", response.data.weather[0].description);
+  iconElement.setAttribute("src", response.data.condition.icon_url);
+  iconElement.setAttribute("alt", response.data.condition.description);
 
   document.querySelector(
     "#zmienialneMiasto"
-  ).innerHTML = `${response.data.name}`;
+  ).innerHTML = `${response.data.city}`;
 
   document.querySelector(
     "#what-sky"
-  ).innerHTML = `${response.data.weather[0].main}`;
+  ).innerHTML = `${response.data.condition.description}`;
 
-  document.querySelector(
-    "#wind-speed"
-  ).innerHTML = `${response.data.wind.speed}`;
+  document.querySelector("#wind-speed").innerHTML = Math.round(
+    response.data.wind.speed
+  );
 
   document.querySelector(
     "#humidity"
-  ).innerHTML = `${response.data.main.humidity}`;
+  ).innerHTML = `${response.data.temperature.humidity}`;
 }
 
 function serchCity(citySearch) {
-  let unit = "metric";
-  let apiKey = "04a18c41bd60b7687f504a11ab9c3895";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&appid=${apiKey}&units=${unit}`;
+  let apiKey = "8bbb9otb892b40003fdadb08ecfd649a";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${citySearch}&key=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(showTemp);
 }
@@ -97,24 +93,17 @@ function search(event) {
   }
 }
 
-let input = document.querySelector("#city-input");
-input.addEventListener("keypress", search);
-
 function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiKey = "04a18c41bd60b7687f504a11ab9c3895";
-  let unit = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
+  let apiKey = "8bbb9otb892b40003fdadb08ecfd649a";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemp);
 }
 
 function geoButton() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
-
-let loc = document.querySelector("#location");
-loc.addEventListener("click", geoButton);
 
 function displayfahrenheitTemp(event) {
   event.preventDefault();
@@ -134,6 +123,12 @@ function displaycelciusTemp(event) {
   fahrenheitLink.classList.remove("active");
 }
 let celciusTemp = null;
+
+let input = document.querySelector("#city-input");
+input.addEventListener("keypress", search);
+
+let loc = document.querySelector("#location");
+loc.addEventListener("click", geoButton);
 
 let fahrenheitLink = document.querySelector("#fahr-link");
 fahrenheitLink.addEventListener("click", displayfahrenheitTemp);
