@@ -58,6 +58,7 @@ a:link,
 a:visited,
 a:focus,
 a:hover {
+  color: #a48bb0;
   text-decoration: none;
 }
 
@@ -111,4 +112,7 @@ p.day {
   font-weight: 700;
   font-size: 24px;
   margin-bottom: 0;
+}
+a.active {
+  color: #53445a;
 }

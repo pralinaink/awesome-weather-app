@@ -33,7 +33,8 @@ let poprawny = formatDate(currentTime);
 dayTime.innerHTML = poprawny;
 
 function showTemp(response) {
-  let roundTemp = Math.round(response.data.main.temp);
+  celciusTemp = response.data.main.temp;
+  let roundTemp = Math.round(celciusTemp);
   let temp = document.querySelector("#wartosc");
   temp.innerHTML = `${roundTemp}`;
   let iconElement = document.querySelector("#icon");
@@ -94,5 +95,30 @@ function geoButton() {
 
 let loc = document.querySelector("#location");
 loc.addEventListener("click", geoButton);
+
+function displayfahrenheitTemp(event) {
+  event.preventDefault();
+
+  let tempElement = document.querySelector("#wartosc");
+  let farenheitTemp = (celciusTemp * 9) / 5 + 32;
+  tempElement.innerHTML = Math.round(farenheitTemp);
+  celciusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+}
+
+function displaycelciusTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#wartosc");
+  tempElement.innerHTML = Math.round(celciusTemp);
+  celciusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+}
+let celciusTemp = null;
+
+let fahrenheitLink = document.querySelector("#fahr-link");
+fahrenheitLink.addEventListener("click", displayfahrenheitTemp);
+
+let celciusLink = document.querySelector("#cel-link");
+celciusLink.addEventListener("click", displaycelciusTemp);
 
 serchCity("Zagreb");
