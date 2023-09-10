@@ -39,17 +39,19 @@ function displayForecast(response) {
 
   let forecast = response.data.daily;
   let forecastHtml = `<div class="row future">`;
-  forecast.forEach(function (forecastDay) {
-    forecastHtml =
-      forecastHtml +
-      ` <div class="col">
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        ` <div class="col">
                 <img src="${forecastDay.condition.icon_url}" alt="${
-        forecastDay.condition.description
-      }" / >
+          forecastDay.condition.description
+        }" / >
                 <br />
                 <p class="day">${formatForecastday(forecastDay.time)}</p>
                 ${Math.round(forecastDay.temperature.day)}
               </div>`;
+    }
   });
 
   forecastHtml = forecastHtml + `</div>`;
