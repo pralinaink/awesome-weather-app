@@ -74,9 +74,10 @@ a:hover {
 
 .card {
   display: block;
-  margin: 30px auto 0;
+  margin: 100px auto 0;
   box-shadow: -1px 1px 14px rgba(0, 0, 0, 0.2);
 }
+
 .footer {
   display: block;
   margin: 10px auto;

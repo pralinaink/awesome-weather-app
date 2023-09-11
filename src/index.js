@@ -140,6 +140,7 @@ function displaycelciusTemp(event) {
   celciusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
 }
+
 let celciusTemp = null;
 
 let input = document.querySelector("#city-input");
